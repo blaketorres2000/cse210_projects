@@ -30,10 +30,6 @@ class Program
             if (_userInput == "1") 
             {
                 Console.WriteLine();
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Note: If you are adding entries before loading from a file,\nsave the new entries after each entry.\nOtherwise you will lose your new entries.");
-                Console.ResetColor();
-                Console.WriteLine();
                 journal.PromptUserForEntry();
             }
             else if(_userInput == "2")
