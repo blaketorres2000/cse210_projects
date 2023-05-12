@@ -37,8 +37,6 @@ public class Journal
         }
         else
         {
-            _entries.Clear();
-
             using (StreamReader _reader = new StreamReader(_fileName))
             {
                 string _line;
@@ -62,7 +60,10 @@ public class Journal
                         if (DateTime.TryParse(_parts[2], out _time))
                         {
                             Entry _entry = new Entry(_prompt, _comment, _time);
-                            _entries.Add(_entry);
+                            if (!_entries.Contains(_entry))
+                            {
+                                _entries.Add(_entry);
+                            }
                         }
                     }
                 }
@@ -152,9 +153,9 @@ public class Journal
     public void SaveEntriesToCSV()
     {
         string _csvFilePath = "journal.csv";
-        
+
         bool _fileExists = File.Exists(_csvFilePath);
-        
+
         using (StreamWriter _writer = new StreamWriter(_csvFilePath, true))
         {
             if (!_fileExists)

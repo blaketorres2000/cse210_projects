@@ -26,4 +26,26 @@ public class Entry
     {
         return $"Prompt: {Prompt}, Comment: {Comment}, Time: {Time}";
     }
+
+    public override bool Equals(object obj)
+    {
+        if (obj == null || GetType() != obj.GetType())
+        {
+            return false;
+        }
+        Entry other = (Entry)obj;
+        return Prompt == other.Prompt && Comment == other.Comment && Time == other.Time;
+    }
+
+    public override int GetHashCode()
+    {
+        unchecked
+        {
+            int hash = 17;
+            hash = hash * 23 + Prompt.GetHashCode();
+            hash = hash * 23 + Comment.GetHashCode();
+            hash = hash * 23 + Time.GetHashCode();
+            return hash;
+        }
+    }
 }
