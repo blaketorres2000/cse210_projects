@@ -3,6 +3,10 @@ using System.Collections.Generic;
 
 public class Program
 {
+    private bool _continueProgram;
+    private Reference _reference;
+    private Scripture _scripture;
+    private string _choice;
     public static void Main()
     {
         bool _continueProgram = true;
