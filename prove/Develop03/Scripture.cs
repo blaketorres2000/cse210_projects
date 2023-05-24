@@ -8,10 +8,10 @@ public class Scripture
     {
         _reference = reference;
         _text = text;
-        _referenceText = _reference._getReferenceText();
+        _referenceText = _reference.GetReferenceText();
     }
 
-    public void _hideRandomWords()
+    public void HideRandomWords()
     {
         string[] _words = _text.Split(' ');
         Random _random = new Random();
@@ -52,7 +52,7 @@ public class Scripture
         _text = string.Join(' ', _words);
     }
 
-    public bool _hasWordsToHide()
+    public bool HasWordsToHide()
     {
         string[] _words = _text.Split(' ');
 
@@ -67,12 +67,12 @@ public class Scripture
         return false; // No non-hidden _words found
     }
 
-    public string _getRenderedText()
+    public string GetRenderedText()
     {
         return _text;
     }
 
-    public string _getReferenceText()
+    public string GetReferenceText()
     {
         return _referenceText;
     }

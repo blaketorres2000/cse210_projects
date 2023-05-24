@@ -18,9 +18,9 @@ public class Program
             "saith the Father: Ye shall have eternal life.");
 
             Console.Clear();
-            Console.WriteLine(_reference._getReferenceText());
+            Console.WriteLine(_reference.GetReferenceText());
             Console.WriteLine();
-            Console.WriteLine(_scripture._getRenderedText());
+            Console.WriteLine(_scripture.GetRenderedText());
 
             Console.WriteLine();
             Console.WriteLine("Press Enter to hide more words or type 'quit' to exit.");
@@ -32,15 +32,15 @@ public class Program
             }
             else
             {
-                while (_scripture._hasWordsToHide())
+                while (_scripture.HasWordsToHide())
                 {
-                    _scripture._hideRandomWords();
+                    _scripture.HideRandomWords();
                     Console.Clear();
-                    Console.WriteLine(_reference._getReferenceText());
+                    Console.WriteLine(_reference.GetReferenceText());
                     Console.WriteLine();
-                    Console.WriteLine(_scripture._getRenderedText());
+                    Console.WriteLine(_scripture.GetRenderedText());
 
-                    if (!_scripture._hasWordsToHide())
+                    if (!_scripture.HasWordsToHide())
                     {
                         Console.WriteLine();
                         Console.WriteLine("No more words to hide.");
@@ -58,7 +58,7 @@ public class Program
                     }
                 }
 
-                if (!_scripture._hasWordsToHide())
+                if (!_scripture.HasWordsToHide())
                 {
                     Console.WriteLine("Great job!");
                     _continueProgram = false;

@@ -16,7 +16,7 @@ public class Reference
         _endVerse = endVerse;
     }
 
-    public string _getReferenceText()
+    public string GetReferenceText()
     {
         if (_startVerse == _endVerse)
         {

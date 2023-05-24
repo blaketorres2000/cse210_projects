@@ -11,7 +11,7 @@ public class Word
         _isHidden = false;
     }
 
-    public string _getWord()
+    public string GetWord()
     {
         if (_isHidden)
         {
@@ -23,12 +23,12 @@ public class Word
         }
     }
 
-    public void _hide()
+    public void Hide()
     {
         _isHidden = true;
     }
 
-    public bool _hidden()
+    public bool Hidden()
     {
         return _isHidden;
     }
