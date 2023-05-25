@@ -16,19 +16,19 @@ public class Scripture
         string[] _words = _text.Split(' ');
         Random _random = new Random();
 
-        List<int> _indexes = new List<int>(); // Create a list to store the available indices
+        List<int> _indexes = new List<int>();
 
         for (int i = 0; i < _words.Length; i++)
         {
-            if (!_words[i].Contains("__________")) // Only add non-hidden _words to the _indexes list
+            if (!_words[i].Contains("__________"))
             {
                 _indexes.Add(i);
             }
         }
 
-        if (_indexes.Count <= 4) // Check if there are 4 or fewer non-hidden _words
+        if (_indexes.Count <= 4)
         {
-            // Remove all remaining _words
+
             foreach (int _index in _indexes)
             {
                 _words[_index] = "__________";
@@ -36,16 +36,15 @@ public class Scripture
         }
         else
         {
-            int _count = _random.Next(1, 5); // Choose a _random number between 1 and 4 (inclusive)
+            int _count = _random.Next(1, 5);
 
             for (int i = 0; i < _count; i++)
             {
-                // Rest of the code remains the same
                 int _randomIndex = _random.Next(0, _indexes.Count);
                 int _selectedIndex = _indexes[_randomIndex];
 
                 _words[_selectedIndex] = "__________";
-                _indexes.RemoveAt(_randomIndex); // Remove the selected _index from _indexes
+                _indexes.RemoveAt(_randomIndex);
             }
         }
 
@@ -60,11 +59,11 @@ public class Scripture
         {
             if (!_word.Contains("__________"))
             {
-                return true; // At least one non-hidden _word found
+                return true; 
             }
         }
 
-        return false; // No non-hidden _words found
+        return false;
     }
 
     public string GetRenderedText()
