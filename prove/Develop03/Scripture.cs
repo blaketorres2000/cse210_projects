@@ -1,65 +1,61 @@
 public class Scripture
 {
     private Reference _reference;
-    private string _text;
+    private List<Word> _words;
     private string _referenceText;
 
     public Scripture(Reference reference, string text)
     {
         _reference = reference;
-        _text = text;
         _referenceText = _reference.GetReferenceText();
+        _words = new List<Word>();
+
+        CreateWordInstances(text);
     }
 
+    private void CreateWordInstances(string text)
+    {
+        string[] wordArray = text.Split(' ');
+
+        foreach (string word in wordArray)
+        {
+            _words.Add(new Word(word));
+        }
+    }
     public void HideRandomWords()
     {
-        string[] _words = _text.Split(' ');
-        Random _random = new Random();
+        Random random = new Random();
 
-        List<int> _indexes = new List<int>();
+        List<Word> visibleWords = _words.FindAll(word => !word.Hidden());
 
-        for (int i = 0; i < _words.Length; i++)
+        if (visibleWords.Count <= 4)
         {
-            if (!_words[i].Contains("__________"))
+            foreach (Word word in visibleWords)
             {
-                _indexes.Add(i);
-            }
-        }
-
-        if (_indexes.Count <= 4)
-        {
-
-            foreach (int _index in _indexes)
-            {
-                _words[_index] = "__________";
+                word.Hide();
             }
         }
         else
         {
-            int _count = _random.Next(1, 5);
+            int count = random.Next(1, 5);
 
-            for (int i = 0; i < _count; i++)
+            for (int i = 0; i < count; i++)
             {
-                int _randomIndex = _random.Next(0, _indexes.Count);
-                int _selectedIndex = _indexes[_randomIndex];
-
-                _words[_selectedIndex] = "__________";
-                _indexes.RemoveAt(_randomIndex);
+                int randomIndex = random.Next(0, visibleWords.Count);
+                Word selectedWord = visibleWords[randomIndex];
+                selectedWord.Hide();
+                visibleWords.RemoveAt(randomIndex);
             }
         }
-
-        _text = string.Join(' ', _words);
     }
 
     public bool HasWordsToHide()
     {
-        string[] _words = _text.Split(' ');
-
-        foreach (string _word in _words)
+        foreach (Word word in _words)
         {
-            if (!_word.Contains("__________"))
+            if (!word.Hidden())
             {
-                return true; 
+                return true;
             }
         }
 
@@ -68,12 +64,28 @@ public class Scripture
 
     public string GetRenderedText()
     {
-        return _text;
+        List<string> renderedWords = new List<string>();
+
+        foreach (Word word in _words)
+        {
+            renderedWords.Add(word.GetWord());
+        }
+
+        return string.Join(' ', renderedWords);
     }
 
     public string GetReferenceText()
     {
         return _referenceText;
     }
-}
 
+    public Word GetWord(int index)
+    {
+        if (index >= 0 && index < _words.Count)
+        {
+            return _words[index];
+        }
+
+        return null;
+    }
+}
