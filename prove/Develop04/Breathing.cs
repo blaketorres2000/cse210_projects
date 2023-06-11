@@ -13,7 +13,7 @@ class BreathingActivity : Activity
     {
     }
 
-    public override void PerformActivity(int _duration, Log log) // Pass Log instance as a parameter
+    public override void PerformActivity(int _duration, Log log)
     {   
         DisplayStartMessage(_duration);
         CountDown();
@@ -32,7 +32,6 @@ class BreathingActivity : Activity
 
         DisplayEndMessage(_duration);
 
-        // Write activity details to the log file
         Log.AppendToLog(_name, _duration);
     }
 }

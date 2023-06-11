@@ -2,12 +2,12 @@ public class Log
 {
     private static string _logFilePath = "log.txt";
 
-    public static void AppendToLog(string name, int duration, int itemCount = 0)
+    public static void AppendToLog(string _name, int _duration, int _itemCount = 0)
     {
-        string _logEntry = $"{duration} seconds of the {name} completed";
-        if (itemCount > 0)
+        string _logEntry = $"{_duration} seconds of the {_name} completed";
+        if (_itemCount > 0)
         {
-            _logEntry += $" and {itemCount} items listed";
+            _logEntry += $" and {_itemCount} items listed";
         }
         _logEntry += $": {DateTime.Now}";
 

@@ -2,7 +2,7 @@ using System.Diagnostics;
 
 class ReflectionActivity : Activity
 {
-    public override string GetName() // Override GetName() method in each derived activity class
+    public override string GetName() 
     {
         return _name;
     }
@@ -58,7 +58,6 @@ class ReflectionActivity : Activity
 
         DisplayEndMessage(_duration);
 
-        // Write activity details to the log file
         Log.AppendToLog(_name, _duration);
     }
 }

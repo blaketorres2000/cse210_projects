@@ -51,7 +51,6 @@ class ListingActivity : Activity
         Console.WriteLine($"You have listed {_itemCount} items.");
         DisplayEndMessage(_duration);
 
-        // Write activity details to the log file
         Log.AppendToLog(_name, _duration, _itemCount);
     }
 }
