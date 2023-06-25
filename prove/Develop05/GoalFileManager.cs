@@ -4,7 +4,7 @@ public class GoalFileManager
     {
         using (StreamWriter writer = new StreamWriter(fileName))
         {
-            writer.WriteLine(score); // Save the current total score
+            writer.WriteLine(score); 
             foreach (var goal in goals)
             {
                 if (goal is ChecklistGoal checklistGoal)
@@ -22,11 +22,10 @@ public class GoalFileManager
     public (List<Activity> goals, int score) LoadGoalsFromFile(string fileName)
     {
         List<Activity> goals = new List<Activity>();
-        int score = 0; // Initialize the score variable
+        int score = 0; 
 
         using (StreamReader reader = new StreamReader(fileName))
         {
-            // Load the current total score
             if (!reader.EndOfStream)
             {
                 string scoreLine = reader.ReadLine();
