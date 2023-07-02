@@ -1,15 +1,34 @@
 public class ChecklistGoal : Activity
 {
-    public int RequiredTimes { get; set; }
-    public int TimesCompleted { get; set; }
-    public int Bonus { get; set; }
+    private int _requiredTimes;
+    private int _timesCompleted;
+    private int _bonus;
 
-    public ChecklistGoal(string name, int value, bool isComplete, int timesCompleted, int requiredTimes, int bonus) : base(name, value)
+    public ChecklistGoal(string name, int value, bool isComplete, int timesCompleted, int requiredTimes, int bonus)
+        : base(name, value)
     {
         IsComplete = isComplete;
-        TimesCompleted = timesCompleted;
-        RequiredTimes = requiredTimes;
-        Bonus = bonus;
+        _timesCompleted = timesCompleted;
+        _requiredTimes = requiredTimes;
+        _bonus = bonus;
+    }
+
+    public int RequiredTimes
+    {
+        get { return _requiredTimes; }
+        set { _requiredTimes = value; }
+    }
+
+    public int TimesCompleted
+    {
+        get { return _timesCompleted; }
+        set { _timesCompleted = value; }
+    }
+
+    public int Bonus
+    {
+        get { return _bonus; }
+        set { _bonus = value; }
     }
 
     public override void Complete()

@@ -4,7 +4,7 @@ public class GoalFileManager
     {
         using (StreamWriter writer = new StreamWriter(fileName))
         {
-            writer.WriteLine(score); 
+            writer.WriteLine(score);
             foreach (var goal in goals)
             {
                 if (goal is ChecklistGoal checklistGoal)
@@ -13,7 +13,7 @@ public class GoalFileManager
                 }
                 else
                 {
-                writer.WriteLine($"{goal.GetType().Name}|{goal.Name}|{goal.Value}|{goal.IsComplete}|0|0|0");
+                    writer.WriteLine($"{goal.GetType().Name}|{goal.Name}|{goal.Value}|{goal.IsComplete}|0|0|0");
                 }
             }
         }
@@ -22,7 +22,7 @@ public class GoalFileManager
     public (List<Activity> goals, int score) LoadGoalsFromFile(string fileName)
     {
         List<Activity> goals = new List<Activity>();
-        int score = 0; 
+        int score = 0;
 
         using (StreamReader reader = new StreamReader(fileName))
         {

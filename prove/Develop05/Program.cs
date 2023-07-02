@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 public class Program
 {
@@ -69,10 +68,10 @@ public class Program
             Console.WriteLine("5. Load Goals");
             Console.WriteLine("6. Exit");
             Console.Write("Enter your choice: ");
-            int _choice = Convert.ToInt32(Console.ReadLine());
+            int choice = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine();
 
-            switch (_choice)
+            switch (choice)
             {
                 case 1:
                     Console.WriteLine("Select goal type:");
@@ -81,32 +80,30 @@ public class Program
                     Console.WriteLine("3. Checklist Goal");
                     Console.WriteLine();
                     Console.Write("Enter goal type: ");
-                    int _goalType = Convert.ToInt32(Console.ReadLine());
+                    int goalType = Convert.ToInt32(Console.ReadLine());
                     Console.Write("Enter goal name: ");
-                    string _name = Console.ReadLine();
+                    string name = Console.ReadLine();
                     Console.Write("Enter goal value: ");
-                    int _value = Convert.ToInt32(Console.ReadLine());
+                    int value = Convert.ToInt32(Console.ReadLine());
                     Console.WriteLine();
 
-
-                    switch (_goalType)
+                    switch (goalType)
                     {
                         case 1:
-                            AddGoal(new SimpleGoal(_name, _value, false));
+                            AddGoal(new SimpleGoal(name, value, false));
                             break;
                         case 2:
-                            AddGoal(new EternalGoal(_name, _value, false));
+                            AddGoal(new EternalGoal(name, value, false));
                             break;
                         case 3:
                             Console.Write("Enter required times for the goal: ");
-                            int _requiredTimes = Convert.ToInt32(Console.ReadLine());
+                            int requiredTimes = Convert.ToInt32(Console.ReadLine());
                             Console.Write("Enter bonus value for completing the goal: ");
-                            int _bonus = Convert.ToInt32(Console.ReadLine());
-                            bool _isComplete = false;
-                            int _timesCompleted = 0; 
-                            AddGoal(new ChecklistGoal(_name, _value, _isComplete, _timesCompleted, _requiredTimes, _bonus));
+                            int bonus = Convert.ToInt32(Console.ReadLine());
+                            bool isComplete = false;
+                            int timesCompleted = 0;
+                            AddGoal(new ChecklistGoal(name, value, isComplete, timesCompleted, requiredTimes, bonus));
                             break;
-
                         default:
                             Console.WriteLine("Invalid goal type.");
                             break;
@@ -119,11 +116,11 @@ public class Program
                         Console.WriteLine($"{i + 1}. {_goals[i].Name}");
                     }
                     Console.Write("Enter goal number: ");
-                    int _goalNumber = Convert.ToInt32(Console.ReadLine());
+                    int goalNumber = Convert.ToInt32(Console.ReadLine());
 
-                    if (_goalNumber > 0 && _goalNumber <= _goals.Count)
+                    if (goalNumber > 0 && goalNumber <= _goals.Count)
                     {
-                        RecordEvent(_goals[_goalNumber - 1]);
+                        RecordEvent(_goals[goalNumber - 1]);
                     }
                     else
                     {
@@ -137,15 +134,15 @@ public class Program
                     break;
                 case 4:
                     Console.Write("Enter file name to save goals: ");
-                    string _saveFileName = Console.ReadLine();
-                    SaveGoals(_saveFileName);
+                    string saveFileName = Console.ReadLine();
+                    SaveGoals(saveFileName);
                     Console.WriteLine("Goals saved successfully!");
                     Console.WriteLine();
                     break;
                 case 5:
                     Console.Write("Enter file name to load goals: ");
-                    string _loadFileName = Console.ReadLine();
-                    LoadGoals(_loadFileName);
+                    string loadFileName = Console.ReadLine();
+                    LoadGoals(loadFileName);
                     Console.WriteLine("Goals loaded successfully!");
                     Console.WriteLine();
                     break;
@@ -164,7 +161,7 @@ public class Program
 
     public static void Main(string[] args)
     {
-        Program _eternalQuest = new Program();
-        _eternalQuest.Run();
+        Program eternalQuest = new Program();
+        eternalQuest.Run();
     }
 }

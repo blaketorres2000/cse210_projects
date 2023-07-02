@@ -1,6 +1,9 @@
 public class EternalGoal : Activity
 {
-    public EternalGoal(string name, int value, bool isComplete) : base(name, value) { }
+    public EternalGoal(string name, int value, bool isComplete) : base(name, value)
+    {
+        IsComplete = isComplete;
+    }
 
     public override void Complete()
     {

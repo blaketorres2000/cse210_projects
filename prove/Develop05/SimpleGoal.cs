@@ -1,6 +1,9 @@
 public class SimpleGoal : Activity
 {
-    public SimpleGoal(string name, int value, bool isComplete) : base(name, value) { }
+    public SimpleGoal(string name, int value, bool isComplete) : base(name, value)
+    {
+        IsComplete = isComplete;
+    }
 
     public override void Complete()
     {
