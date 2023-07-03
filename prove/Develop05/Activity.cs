@@ -32,4 +32,6 @@ public abstract class Activity
     public abstract void Complete();
 
     public abstract string GetStatus();
+
+    public abstract void Display();
 }

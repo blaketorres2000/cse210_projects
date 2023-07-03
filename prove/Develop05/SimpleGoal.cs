@@ -10,8 +10,14 @@ public class SimpleGoal : Activity
         IsComplete = true;
     }
 
+    public override void Display()
+    {
+        Console.WriteLine($"{GetStatus()}: Goal: {Name}: Possible Points: {Value}");
+    }
+
     public override string GetStatus()
     {
         return IsComplete ? "[X]" : "[ ]";
     }
 }
+

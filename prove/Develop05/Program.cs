@@ -27,6 +27,8 @@ public class Program
             goal.Complete();
             _score += goal.Value;
             Console.WriteLine("Event recorded successfully!");
+            Console.WriteLine($"Current Score: {_score}");
+
         }
         else
         {
@@ -41,7 +43,7 @@ public class Program
         Console.WriteLine("Goals:");
         foreach (var goal in _goals)
         {
-            Console.WriteLine($"{goal.GetStatus()}: Goal: {goal.Name}: Possible Points: {goal.Value}");
+            goal.Display();
         }
     }
 
@@ -165,3 +167,4 @@ public class Program
         eternalQuest.Run();
     }
 }
+

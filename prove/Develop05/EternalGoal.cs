@@ -10,6 +10,11 @@ public class EternalGoal : Activity
         // No action required for EternalGoal
     }
 
+    public override void Display()
+    {
+        Console.WriteLine($"{GetStatus()}: Goal: {Name}: Possible Points: {Value}");
+    }
+
     public override string GetStatus()
     {
         return "[ ]";

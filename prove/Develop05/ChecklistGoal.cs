@@ -42,6 +42,18 @@ public class ChecklistGoal : Activity
         }
     }
 
+    public override void Display()
+    {
+        if (TimesCompleted == RequiredTimes)
+        {
+            Console.WriteLine("[X]: Goal: {Name}: Possible Points: {Value}");
+        }
+        else
+        {
+            Console.WriteLine($"[ ]: Completed {TimesCompleted}/{RequiredTimes} times: Goal: {Name}: Possible Points: {Value}");
+        }
+    }
+
     public override string GetStatus()
     {
         if (TimesCompleted == RequiredTimes)
